@@ -1,0 +1,32 @@
+name: Update
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 22 * * *"
+jobs:
+  build:
+    name: Update
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/setup-python@v5
+        if: github.event.inputs.publish == 'r'
+        with:
+          python-version: '3.13'
+          cache: 'pip' # caching pip dependencies
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Update rule-set branch
+        run: |
+          source ./rul.sh
+          git init
+          git config --local user.email "github-action@users.noreply.github.com"
+          git config --local user.name "GitHub Action"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git branch -M rule-set
+          git add --all
+          git commit -m "Update rule-set on $(date '+%Y-%m-%d %H:%M')"
+          git push -f origin rule-set
