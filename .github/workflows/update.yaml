@@ -16,9 +16,8 @@ jobs:
           python-version: '3.13'
           cache: 'pip' # caching pip dependencies
       - uses: awalsh128/cache-apt-pkgs-action@latest
-        if: contains( matrix.platform, 'ubuntu' ) && github.event.inputs.source != 'y'
         with:
-          packages: g++ curl
+          packages: g++ curl protobuf-compiler pkg-config libprotobuf-dev
           version: 1.0
       - name: Checkout
         uses: actions/checkout@v5
