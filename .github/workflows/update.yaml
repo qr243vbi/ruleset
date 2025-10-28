@@ -26,6 +26,7 @@ jobs:
           fetch-depth: 0
       - name: Update rule-set branch
         run: |
+          pip install proto-plus
           source ./rul.sh
           git init
           git config --local user.email "github-action@users.noreply.github.com"
