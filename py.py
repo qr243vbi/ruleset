@@ -1,4 +1,5 @@
 import proto
+import json
 class RuleSet(proto.Message):
   items = proto.MapField(proto.STRING, proto.STRING, number=1)
 m={}
@@ -24,3 +25,7 @@ b.close()
 print(str(len(m)) +" rules")
 
 assert (RuleSet.to_dict(rul1) == RuleSet.to_dict(ruleset))
+
+b=open('srslist.json', 'w')
+b.write(json.dumps(m))
+b.close()
