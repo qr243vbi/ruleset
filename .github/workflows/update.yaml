@@ -30,6 +30,7 @@ jobs:
       - name: Update rule-set branch
         run: |
           pip install proto-plus
+          cd gen
           source ./rul.sh
 
           cd rule-set
