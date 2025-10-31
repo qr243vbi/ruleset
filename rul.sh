@@ -6,6 +6,12 @@ cd rule-set
 ../a.out | python3 ../py.py
 
 cd ..
+git clone --depth 1 --single-branch --branch profile https://github.com/throneproj/routeprofiles.git
+cd routeprofiles
+rm -fv README.md
+rm -rfv .git
+
+cd ..
 mkdir routes
 cd routes
 curl -s https://api.github.com/repos/throneproj/routeprofiles/releases/latest \
@@ -18,5 +24,4 @@ protoc lib.proto --cpp_out=.
 g++ test.cpp -o test `pkg-config --libs --cflags protobuf`
 ./test
 
-cd rule-set
 

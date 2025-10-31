@@ -31,6 +31,8 @@ jobs:
         run: |
           pip install proto-plus
           source ./rul.sh
+
+          cd rule-set
           git init
           git config --local user.email "github-action@users.noreply.github.com"
           git config --local user.name "GitHub Action"
@@ -39,6 +41,16 @@ jobs:
           git add --all
           git commit -m "Update rule-set on $(date '+%Y-%m-%d %H:%M')"
           git push -f origin rule-set
+
+          cd routeprofiles
+          git init
+          git config --local user.email "github-action@users.noreply.github.com"
+          git config --local user.name "GitHub Action"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git branch -M routeprofiles
+          git add --all
+          git commit -m "Update routeprofiles on $(date '+%Y-%m-%d %H:%M')"
+          git push -f origin routeprofiles
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
