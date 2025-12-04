@@ -1,0 +1,7 @@
+Bypass_China:绕过中国
+Bypass_Iran:绕过伊朗
+Bypass_Russia:绕过俄罗斯
+Proxy_Antizapret:代理反封锁
+Proxy_China_Blocked:代理中国被封
+Proxy_Refilter:代理重过滤
+Proxy_Russia_Blocked:代理俄罗斯被封
