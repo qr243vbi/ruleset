@@ -33,22 +33,25 @@ jobs:
           cd gen
           source ./rul.sh
 
+          mv rule-set rule-set2
+          git config --global user.email "github-action@users.noreply.github.com"
+          git config --global user.name "GitHub Action"
+          git clone --depth 1 "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" rule-set
           cd rule-set
-          git init
-          git config --local user.email "github-action@users.noreply.github.com"
-          git config --local user.name "GitHub Action"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git branch -M rule-set
+          rm *
+          mv ../rule-set2/* ./
           git add --all
           git commit -m "Update rule-set on $(date '+%Y-%m-%d %H:%M')"
           git push -f origin rule-set
 
-          cd ../routeprofiles
-          git init
-          git config --local user.email "github-action@users.noreply.github.com"
-          git config --local user.name "GitHub Action"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          cd ../
+          mv routeprofiles routeprofiles2
+          git clone --depth 1 "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" routeprofiles
+          cd routeprofiles
           git branch -M routeprofiles
+          rm *
+          mv ../routeprofiles2/* ./
           git add --all
           git commit -m "Update routeprofiles on $(date '+%Y-%m-%d %H:%M')"
           git push -f origin routeprofiles
