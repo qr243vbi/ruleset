@@ -39,7 +39,7 @@ jobs:
           git clone --depth 1 "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" rule-set
           cd rule-set
           git branch -M rule-set
-          rm *
+          rm -rfv *
           mv ../rule-set2/* ./
           git add --all
           git commit -m "Update rule-set on $(date '+%Y-%m-%d %H:%M')"
@@ -50,7 +50,7 @@ jobs:
           git clone --depth 1 "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" routeprofiles
           cd routeprofiles
           git branch -M routeprofiles
-          rm *
+          rm -rfv *
           mv ../routeprofiles2/* ./
           git add --all
           git commit -m "Update routeprofiles on $(date '+%Y-%m-%d %H:%M')"
