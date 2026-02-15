@@ -1,0 +1,19 @@
+[{
+    "action": "hijack-dns",
+    "protocol": "dns"
+}
+,{
+    "action": "route",
+    "ip_is_private": true,
+    "outbound": "direct"
+}
+,{
+    "action": "route",
+    "outbound": "direct",
+    "rule_set": [
+        "geoip-ir",
+        "geosite-ir"
+    ]
+}
+]
+
