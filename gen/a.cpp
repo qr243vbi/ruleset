@@ -3,6 +3,8 @@
 #include "srslist.h"
 #include <iostream>
 
+#define ruleSetMap ruleSetList
+
 int main(){
   for (auto pair : ruleSetMap){
 //     std::string originalString = pair.second;
