@@ -1,0 +1,13 @@
+[{
+    "action": "hijack-dns",
+    "protocol": "dns"
+}
+,{
+    "action": "route",
+    "outbound": "proxy",
+    "rule_set": [
+        "geosite-gfw",
+        "geosite-greatfire"
+    ]
+}
+]
